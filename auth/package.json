@@ -7,11 +7,14 @@
         "test": "tests"
     },
     "scripts": {
-        "postinstall": "npm run uptodate",
+        "preinstall": "npm run uptodate",
+        "watch": "tsc -w -p ./src",
+        "debug": "nodemon --watch ./build --inspect=0.0.0.0:9222 --nolazy ./build/authentication-server.js",
         "cleanup": "npm run prettify-write && npm run linter-write",
-        "start": "nodemon src/index.ts",
+        "dev": "nodemon --config \"./util/nodemon.json\"",
         "linter-write": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'",
         "prettify-write": "prettier --config ./.prettierrc --write \"src/**/*{.ts,.js,.json,.css,.scss}\"",
+        "start": "node ./dist/index.js",
         "build": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1",
         "uptodate": "npm update && npm update --dev"
