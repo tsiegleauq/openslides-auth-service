@@ -8,6 +8,11 @@ export namespace Config {
 
 export namespace Keys {
     const encoding = 'utf8';
+    /**
+     * rem: effectively, you try to alter the host file system by writing files.
+     * My docker deamon heavily denies that, resulting in errors during execution:
+     * `mkdir: cannot create directory './src/config/keys': Permission denied`
+     */
     const pathToKeys = 'src/config/keys';
 
     export function publicTokenKey(): string {

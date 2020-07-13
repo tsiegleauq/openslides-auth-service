@@ -37,10 +37,10 @@ Exception InvalidCredentials
 Login (username: string, password: string): (Token, Cookie);
 
 /**
-* An example for any protected route. If the client requests protected resources, it has to 
+* An example for any protected route. If the client requests protected resources, it has to
 * send the signed Token and the cookie, it receives from the service at login, to the server.
 *
-* This will be a library to act as part of the auth-service. The other services have not to 
+* This will be a library to act as part of the auth-service. The other services have not to
 * request the auth-service for authentication. Instead, they use this library-function in their own
 * and receive knowledge about authentication without request.
 *
@@ -51,7 +51,7 @@ Login (username: string, password: string): (Token, Cookie);
 Authenticate (token: Token): {userId: number; sessionId: string;};
 
 /**
-* A request to get knowledge about themselves. This information is contained in the payload of 
+* A request to get knowledge about themselves. This information is contained in the payload of
 * a Token. So, this function handles the refreshing of a Token.
 *
 * Sends back a new Token.
@@ -64,7 +64,7 @@ WhoAmI(cookie: Cookie): Token;
 
 /**
 * Function to kill one specific session by its id.
-* 
+*
 * An exception is thrown, if the client has not the necessary permissions to make this action.
 * Also, if there is no session with the given id, an exception is thrown.
 *
@@ -77,10 +77,10 @@ ClearSessionById (sessionId: string, token: Token): void publishes LogoutSession
 * Function to kill all current opened sessions except the one, which is requesting.
 *
 * An exception is thrown, if the client has not the necessary permissions to make this action.
-* 
+*
 * @throws NoPermissions: Only (super-) admins has the necessary permissions to logout and clear
 * other user's session.
-*/ 
+*/
 ClearAllSessionsExceptThemselves (token: Token): void publishes LogoutSessionEvent;
 
 Event LogoutSessionEvent on topic Logout {
